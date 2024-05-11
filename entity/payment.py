@@ -1,6 +1,5 @@
 class Payment:
-    def __init__(self, paymentID, studentID, amount, paymentDate):
-        self.paymentID = paymentID
+    def __init__(self, studentID, amount, paymentDate):
         self.studentId = studentID
         self.amount = amount
         self.paymentDate = paymentDate

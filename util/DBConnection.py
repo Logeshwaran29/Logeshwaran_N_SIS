@@ -1,6 +1,5 @@
 import mysql.connector as sql
 
-
 class DBConnUtil:
     connection = None
 

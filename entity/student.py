@@ -7,9 +7,6 @@ class Student:
         self.email = email
         self.phoneNumber = phoneNumber
 
-    def get_student_id(self):
-        return self.studentId
-
     def get_first_name(self):
         return self.firstName
 
