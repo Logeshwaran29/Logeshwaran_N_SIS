@@ -5,6 +5,7 @@ from dao.SIS import SIS
 from dao.Course import course
 from dao.Student import student
 from dao.Teacher import teacher
+from datetime import date
 
 
 class Main:
@@ -49,7 +50,16 @@ class Main:
         pass
 
     def make_payment(self):
-        pass
+        print('\n--- Make Payment ---')
+        studID = int(input('Enter Student ID:'))
+        firstName = input('Enter FirstName:')
+        lastName = input('Enter LastName:')
+        dob = input('Enter dob:')
+        email = input('Enter Email:')
+        phNo = input('Enter Phone Number:')
+        stu = Student(studID, firstName, lastName, dob, email, phNo)
+        amt = int(input('Enter Amount:'))
+        self.sisMethod.recordPayment(stu, amt, date.today())
 
     def get_Enrollments(self):
         pass
