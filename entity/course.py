@@ -1,22 +1,23 @@
 class Course:
-    def __init__(self, course_name, credits, instructor_name):
+    def __init__(self, courseID, course_name, courseCode, instructor_name):
+        self.courseID = courseID
         self.courseName = course_name
-        self.credits = credits
+        self.courseCode = courseCode
         self.instructorName = instructor_name
 
-    def course_name(self):
+    def get_course_name(self):
         return self.courseName
 
     def set_course_name(self, value):
         self.courseName = value
 
-    def credits(self):
-        return self.credits
+    def get_course_code(self):
+        return self.courseCode
 
-    def set_credits(self, value):
-        self.credits = value
+    def set_course_code(self, courseCode):
+        self.courseCode = courseCode
 
-    def instructor_name(self):
+    def get_instructor_name(self):
         return self.instructorName
 
     def set_instructor_name(self, value):
