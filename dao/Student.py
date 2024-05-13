@@ -114,3 +114,15 @@ class student:
             print('Student Created Successfully...')
         except Exception as e:
             print(e)
+
+    def getStudent(self, studID):
+        try:
+            stmt = self.connection.cursor()
+            stmt.execute(f'''select * from Student where studentID = {studID}''')
+            res = stmt.fetchall()
+            if not res:
+                raise StudentNotFoundException('Student Not Found...')
+            return res
+        except Exception as e:
+            print(e)
+            return []

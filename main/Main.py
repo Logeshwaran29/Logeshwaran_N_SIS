@@ -44,10 +44,37 @@ class Main:
         self.courseMethod.CreateCourse(cour)
 
     def enroll_Course(self):
-        pass
+        print('\n--- Enroll Course ---')
+        studID = int(input('Enter StudentID:'))
+        s = self.stuMethod.getStudent(studID)
+        if not s:
+            print('Enter Correct StudentID!')
+        stu = Student(s[0][0], s[0][1], s[0][2], s[0][3], s[0][4], s[0][5])
+        c = self.courseMethod.DisplayCourseInfo()
+        print('--- Course List ---')
+        n = 1
+        for i in c:
+            print(f'''{n}:''', i)
+            n += 1
+        op = int(input('Enter Option from Course List:'))-1
+        cour = Course(c[op][0], c[op][1], c[op][2], c[op][3])
+        self.sisMethod.enrollStudent(stu, cour)
 
     def assign_Teacher(self):
-        pass
+        c = self.courseMethod.DisplayCourseInfo()
+        print('--- Course List ---')
+        n = 1
+        for i in c:
+            print(f'''{n}:''', i)
+            n += 1
+        op = int(input('Enter Option from Course List:')) - 1
+        cour = Course(c[op][0], c[op][1], c[op][2], c[op][3])
+        t = int(input('Enter TeacherID:'))
+        r = self.teachMethod.DisplayTeacherInfo(t)
+        if not r:
+            print('Enter Correct TeacherID!')
+        teach = Teacher(r[0][0], r[0][1], r[0][2], r[0][3])
+        self.sisMethod.assignTeacherToCourse(cour, teach)
 
     def make_payment(self):
         print('\n--- Make Payment ---')
@@ -61,9 +88,6 @@ class Main:
         amt = int(input('Enter Amount:'))
         self.sisMethod.recordPayment(stu, amt, date.today())
 
-    def get_Enrollments(self):
-        pass
-
     def run(self):
         while True:
             print("\n1. Create Student")
@@ -72,7 +96,6 @@ class Main:
             print("4. Enroll Course")
             print("5. Assign Teacher")
             print("6. Make Payment")
-            print("7. Get Enrollments")
             print("0. Exit")
             option = int(input('Enter Option:'))
 
@@ -88,8 +111,6 @@ class Main:
                 self.assign_Teacher()
             elif option == 6:
                 self.make_payment()
-            elif option == 7:
-                self.get_Enrollments()
             elif option == 0:
                 return
             else:
