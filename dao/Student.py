@@ -1,3 +1,5 @@
+import datetime
+
 from util.DBConnection import DBConnUtil
 from exception.StudentNotFoundException import StudentNotFoundException
 from exception.CourseNotFoundException import CourseNotFoundException
@@ -108,7 +110,9 @@ class student:
         try:
             stmt = self.connection.cursor()
             query = '''insert into Student values(%s, %s, %s, %s, %s, %s)'''
-            data = [Student.studentId, Student.firstName, Student.lastName, Student.dob, Student.email, Student.phoneNumber]
+            year, month, day = map(int, Student.dob.split('-'))
+            date = datetime.date(year, month, day)
+            data = [Student.studentId, Student.firstName, Student.lastName, date, Student.email, Student.phoneNumber]
             stmt.execute(query, data)
             self.connection.commit()
             print('Student Created Successfully...')

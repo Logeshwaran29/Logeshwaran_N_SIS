@@ -20,7 +20,7 @@ class Main:
         studID = int(input('Enter Student ID:'))
         firstName = input('Enter FirstName:')
         lastName = input('Enter LastName:')
-        dob = input('Enter dob:')
+        dob = input('Enter dob (yyyy-mm-dd):')
         email = input('Enter Email:')
         phNo = input('Enter Phone Number:')
         stu = Student(studID, firstName, lastName, dob, email, phNo)
